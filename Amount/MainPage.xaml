@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Amount.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="BgColor">WhiteSmoke</Color>
+            <Color x:Key="FgColor">Navy</Color>
+            <Color x:Key="SecondaryColor">BlueViolet</Color>
+            <x:Double x:Key="LabelSize">22</x:Double>
+        </ResourceDictionary>
+
+        <Style TargetType="Label" x:Key="BaseLabelStyle">
+            <Setter Property="FontSize" Value="{StaticResource LabelSize}" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+
+        <Style
+            BasedOn="{StaticResource BaseLabelStyle}"
+            TargetType="Label"
+            x:Key="PrimaryLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource FgColor}" />
+        </Style>
+
+        <Style
+            BasedOn="{StaticResource BaseLabelStyle}"
+            TargetType="Label"
+            x:Key="SecondaryLabelStyle">
+            <Setter Property="TextColor" Value="{StaticResource SecondaryColor}" />
+            <Setter Property="FontSize" Value="28" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid
+        BackgroundColor="{DynamicResource BgColor}"
+        ColumnDefinitions="*,*"
+        Padding="40"
+        RowDefinitions="Auto, Auto, Auto, *, Auto, Auto, Auto"
+        RowSpacing="20">
+
+        <Label
+            Grid.Column="0"
+            Grid.Row="0"
+            Style="{StaticResource PrimaryLabelStyle}"
+            Text="Bill"
+            VerticalOptions="Center" />
+        <Entry
+            Grid.Column="1"
+            Grid.Row="0"
+            Keyboard="Numeric"
+            Placeholder="Enter Amount"
+            x:Name="BillEntry" />
+
+        <Label
+            Grid.Column="0"
+            Grid.Row="1"
+            Style="{StaticResource PrimaryLabelStyle}"
+            Text="Tip" />
+        <Label
+            Grid.Column="1"
+            Grid.Row="1"
+            Text="Tip" />
+
+
+        <Label
+            Grid.Column="0"
+            Grid.Row="2"
+            Style="{StaticResource SecondaryLabelStyle}"
+            Text="Total" />
+
+        <Label
+            Grid.Column="1"
+            Grid.Row="2"
+            Text="R$ 11.50" />
+
+        <Button
+            Clicked="OnChangeColorClicked"
+            Grid.Column="0"
+            Grid.Row="3"
+            Text="Change Color"
+            VerticalOptions="Center" />
+
+        <Label
+            Grid.Column="0"
+            Grid.Row="3"
+            Text="Tip Percentage"
+            VerticalOptions="End" />
+        <Label
+            Grid.Column="1"
+            Grid.Row="3"
+            Text="15%"
+            VerticalOptions="End" />
+
+        <Slider
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="4"
+            Maximum="100"
+            Minimum="0"
+            Value="15"
+            x:Name="TipSlider" />
+
+        <Button
+            Clicked="OnVanillaTipClicked"
+            Grid.Column="0"
+            Grid.Row="5"
+            Margin="5,0"
+            Text="15%"
+            x:Name="VanillaTipButton" />
+        <Button
+            Clicked="OnGenerousTipButtonClicked"
+            Grid.Column="1"
+            Grid.Row="5"
+            Margin="5,0"
+            Text="20%"
+            x:Name="GenerousTipButton" />
+
+        <Button
+            Clicked="OnRoundDownClicked"
+            Grid.Column="0"
+            Grid.Row="6"
+            Margin="5,0"
+            Text="Round Down"
+            x:Name="roundDownButton" />
+        <Button
+            Clicked="OnRoundUpClicked"
+            Grid.Column="1"
+            Grid.Row="6"
+            Margin="5,0"
+            Text="Round Up"
+            x:Name="roundUpButton" />
+
+    </Grid>
+
+</ContentPage>
